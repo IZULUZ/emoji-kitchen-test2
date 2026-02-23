@@ -1,151 +1,46 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>감정 교실</title>
-
-<!-- 귀여운 연필 느낌 폰트 -->
-<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
-
-<style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Gowun Dodum', sans-serif;
-}
-
-body {
-    height: 100vh;
-    background-color: #f5f3ef;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-/* 🎨 이모지 벽지 배경 */
-body::before {
-    content: "😊 😆 😡 😭 😍 🤩 😴 😎 🥳 😇";
-    position: absolute;
-    font-size: 80px;
-    opacity: 0.2;
-    transform: rotate(-25deg);
-    white-space: pre-wrap;
-    width: 200%;
-    height: 200%;
-    line-height: 200px;
-    pointer-events: none;
-}
-
-/* 🏷️ 상단 제목 */
-.title {
-    font-size: 48px;
-    margin-bottom: 40px;
-    text-align: center;
-}
-
-/* 🧍 기본 캐릭터 이미지 */
-.main-character {
-    width: 250px;
-    height: 250px;
-    background-image: url('default_character.png');
-    background-size: cover;
-    background-position: center;
-    margin-bottom: 30px;
-}
-
-/* 😀 감정 선택 버튼 */
-.emotion-btn {
-    padding: 20px 50px;
-    font-size: 24px;
-    border-radius: 15px;
-    border: none;
-    background-color: #ffd966;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.emotion-btn:hover {
-    transform: scale(1.1);
-}
-
-/* ⚙️ 설정 버튼 (5배 크게) */
-.setting-btn {
-    position: absolute;
-    top: 30px;
-    right: 30px;
-    font-size: 60px;
-    cursor: pointer;
-}
-
-/* 👩‍🎓 학생 정사각형 카드 영역 */
-.student-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 150px);
-    gap: 25px;
-    margin-top: 60px;
-}
-
-/* 🟦 정사각형 카드 */
-.student-card {
-    width: 150px;
-    height: 150px;
-    background-color: #ffffff;
-    border-radius: 20px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-}
-
-/* 캐릭터 이미지 */
-.student-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* 이름 + 번호 오버레이 */
-.student-info {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    background: rgba(255,255,255,0.8);
-    padding: 5px 8px;
-    border-radius: 10px;
-    font-size: 14px;
-}
-
-</style>
+    <meta charset="UTF-8">
+    <title>감정 교실</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-<!-- 설정 버튼 -->
 <div class="setting-btn">⚙️</div>
 
-<!-- 제목 -->
-<div class="title">2026.02.23 감정 교실</div>
+<div class="container">
 
-<!-- 기본 캐릭터 -->
-<div class="main-character"></div>
-
-<!-- 감정 고르기 버튼 -->
-<button class="emotion-btn">감정 고르기 😊</button>
-
-<!-- 학생 카드 예시 -->
-<div class="student-grid">
-    <div class="student-card">
-        <img src="character1.png">
-        <div class="student-info">1번 김민준</div>
+    <div class="title">
+        2026.02.23 감정 교실
     </div>
 
-    <div class="student-card">
-        <img src="character2.png">
-        <div class="student-info">2번 이서연</div>
+    <div class="main-character" id="resultCharacter">
+        🙂
     </div>
+
+    <div class="emoji-select-section">
+        <div class="emoji-list" id="emojiList">
+            <span class="emoji">😊</span>
+            <span class="emoji">😡</span>
+            <span class="emoji">😭</span>
+            <span class="emoji">😍</span>
+            <span class="emoji">😴</span>
+            <span class="emoji">🤩</span>
+            <span class="emoji">🥳</span>
+            <span class="emoji">😎</span>
+        </div>
+
+        <div class="result-area">
+            <div class="selected" id="selectedEmojis">선택: </div>
+            <div class="equals">=</div>
+            <div class="result-emoji" id="resultEmoji">🙂</div>
+        </div>
+    </div>
+
 </div>
 
+<script src="script.js"></script>
 </body>
 </html>
