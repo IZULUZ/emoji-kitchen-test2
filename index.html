@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>우리 반 감정 다이어리</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- 교실 영역 -->
+<div class="classroom">
+
+    <!-- 칠판 제목 -->
+    <div class="board-title">
+        오늘 나의 감정은?
+    </div>
+
+    <!-- 감정 말풍선 -->
+    <div class="speech-bubble" id="expression">
+        ? + ? =
+    </div>
+
+    <!-- 책상 영역 -->
+    <div class="desk-area">
+
+        <!-- 캐릭터 -->
+        <div class="student-character">
+            <img id="profileImageDisplay" src="" class="character-img">
+            <div class="student-name" id="studentDisplay"></div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- 감정 버튼 -->
+<button class="emotion-btn" onclick="openEmojiModal()">감정 고르기</button>
+
+<!-- 이모지 선택창 -->
+<div class="bottom-sheet" id="emojiModal">
+    <div class="sheet-header">
+        <span>감정 선택</span>
+        <button onclick="closeEmojiModal()">닫기</button>
+    </div>
+    <div class="emoji-grid" id="emojiGrid"></div>
+</div>
+
+<!-- 설정창 -->
+<div class="bottom-sheet" id="settingsModal">
+    <div class="sheet-header">
+        <span>캐릭터 설정</span>
+        <button onclick="closeSettingsModal()">닫기</button>
+    </div>
+
+    <div class="settings-content">
+        <label>이름</label>
+        <input type="text" id="studentName">
+
+        <label>학급 번호</label>
+        <input type="text" id="studentClass">
+
+        <label>캐릭터 이미지</label>
+        <input type="file" id="profileImage" accept="image/*">
+
+        <img id="previewImage" class="preview">
+
+        <button onclick="saveSettings()">저장하기</button>
+    </div>
+</div>
+
+<!-- 설정 버튼 -->
+<div class="gear-btn" onclick="openSettingsModal()">⚙</div>
+
+<script src="script.js"></script>
+</body>
+</html>
