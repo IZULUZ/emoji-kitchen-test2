@@ -3,16 +3,29 @@ const today = new Date();
 document.getElementById("todayTitle").innerText =
 `${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일 감정 교실`;
 
-// 기본 캐릭터
-let characterImg = "https://cdn.pixabay.com/photo/2017/01/31/13/14/cartoon-2027368_1280.png";
+// 기본 캐릭터 (로컬 SVG)
+const defaultCharacter =
+"data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'>\
+<circle cx='100' cy='80' r='50' fill='white' stroke='black' stroke-width='4'/>\
+<circle cx='85' cy='70' r='5' fill='black'/>\
+<circle cx='115' cy='70' r='5' fill='black'/>\
+<path d='M80 95 Q100 110 120 95' stroke='black' stroke-width='4' fill='none'/>\
+<line x1='100' y1='130' x2='100' y2='180' stroke='black' stroke-width='4'/>\
+<line x1='70' y1='150' x2='130' y2='150' stroke='black' stroke-width='4'/>\
+</svg>";
+
+let characterImg = defaultCharacter;
 document.getElementById("mainCharacter").src = characterImg;
 
-// 이모지 목록
-const emojis=["😀","😡","😢","😴","😍","🤯","😎","🤔","🥳","😭","😇","😈","🥶","🥵","😤"];
-const emojiList=document.getElementById("emojiList");
-const formula=document.getElementById("formula");
+// 이모지
+const emojis=["😀","😡","😢","😴","😍","🤯","😎","🤔","🥳","😭","😇","😈"];
 let selectedEmojis=[];
 let selectedSeat=null;
+
+const emojiList=document.getElementById("emojiList");
+const formula=document.getElementById("formula");
+const goSeatBtn=document.getElementById("goSeatBtn");
 
 emojis.forEach(e=>{
   const span=document.createElement("span");
@@ -20,38 +33,25 @@ emojis.forEach(e=>{
   span.onclick=()=>{
     selectedEmojis.push(e);
     formula.innerText=selectedEmojis.join(" + ");
-    document.getElementById("seatSelectBtn").disabled=false;
+    goSeatBtn.disabled=false;
   };
   emojiList.appendChild(span);
 });
 
-// 팝업 열기
-emotionBtn.onclick=()=>emotionPopup.classList.remove("hidden");
-closeEmotion.onclick=()=>emotionPopup.classList.add("hidden");
-settingBtn.onclick=()=>settingPopup.classList.remove("hidden");
-
-// 설정 저장
-saveSetting.onclick=()=>{
-  const file=imageUpload.files[0];
-  if(file){
-    const reader=new FileReader();
-    reader.onload=(e)=>{
-      characterImg=e.target.result;
-      mainCharacter.src=characterImg;
-    };
-    reader.readAsDataURL(file);
-  }
-  settingPopup.classList.add("hidden");
+// 감정 팝업 열기
+emotionBtn.onclick=()=>{
+  emotionPopup.classList.remove("hidden");
 };
 
-// 좌석 선택 화면 이동
-seatSelectBtn.onclick=()=>{
+// 자리 고르기 이동
+goSeatBtn.onclick=()=>{
+  emotionPopup.classList.add("hidden");
   mainScreen.classList.add("hidden");
   seatScreen.classList.remove("hidden");
   createSeatMap();
 };
 
-// 좌석 생성 (24석)
+// 좌석 생성
 function createSeatMap(){
   const map=document.getElementById("seatMap");
   map.innerHTML="";
@@ -76,7 +76,7 @@ enterClassBtn.onclick=()=>{
   createClassSeats();
 };
 
-// 교실 좌석 배치
+// 교실 좌석 생성
 function createClassSeats(){
   const container=document.getElementById("classSeats");
   container.innerHTML="";
