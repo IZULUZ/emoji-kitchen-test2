@@ -1,0 +1,145 @@
+body{
+    margin:0;
+    font-family:'Gaegu',cursive;
+    background-color:#fffdf7;
+    background-image:
+      radial-gradient(#00000010 1px, transparent 1px),
+      radial-gradient(#00000010 1px, transparent 1px);
+    background-size:30px 30px;
+    height:100vh;
+    overflow:hidden;
+}
+
+/* 교실 전체 */
+.classroom{
+    text-align:center;
+    padding-top:40px;
+}
+
+/* 칠판 제목 */
+.board-title{
+    font-size:8vw;
+    margin-bottom:20px;
+}
+
+/* 말풍선 */
+.speech-bubble{
+    display:inline-block;
+    padding:20px 40px;
+    border:4px solid black;
+    border-radius:40px;
+    font-size:7vw;
+    background:white;
+    margin-bottom:30px;
+}
+
+/* 책상 영역 */
+.desk-area{
+    position:fixed;
+    bottom:80px;
+    width:100%;
+    height:150px;
+    background:#f5deb3;
+    border-top:4px solid black;
+}
+
+/* 캐릭터 */
+.student-character{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    bottom:50px;
+    text-align:center;
+}
+
+.character-img{
+    width:120px;
+    height:120px;
+    border-radius:30px;
+    object-fit:cover;
+    border:4px solid black;
+    background:white;
+}
+
+.student-name{
+    font-size:5vw;
+}
+
+/* 감정 버튼 */
+.emotion-btn{
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:6vw;
+    padding:10px 30px;
+    border-radius:30px;
+    border:4px solid black;
+    background:white;
+}
+
+/* 설정 버튼 */
+.gear-btn{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    font-size:8vw;
+    cursor:pointer;
+}
+
+/* 하단 시트 */
+.bottom-sheet{
+    position:fixed;
+    bottom:-100%;
+    left:0;
+    width:100%;
+    height:60%;
+    background:white;
+    border-top:4px solid black;
+    border-radius:20px 20px 0 0;
+    transition:0.3s;
+    display:flex;
+    flex-direction:column;
+}
+
+.bottom-sheet.active{
+    bottom:0;
+}
+
+.sheet-header{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 20px;
+    font-size:5vw;
+    border-bottom:2px solid #ddd;
+}
+
+.emoji-grid{
+    flex:1;
+    overflow-y:auto;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    padding:15px;
+    font-size:7vw;
+}
+
+.settings-content{
+    padding:20px;
+    overflow-y:auto;
+}
+
+input{
+    width:100%;
+    padding:8px;
+    margin-bottom:15px;
+    font-family:'Gaegu';
+    font-size:5vw;
+}
+
+.preview{
+    width:120px;
+    height:120px;
+    border-radius:20px;
+    margin-bottom:15px;
+}
